@@ -62,6 +62,18 @@
   color: grey;
 }
 
+.facebook {
+  color: #3B5998;
+}
+
+.twitter{
+  color: #1DA1F2;
+}
+
+.instagram{
+  color: #D02B83;
+}
+
 .icon-btn:hover {
   transform: scale(1.10);
   color: #FFFFFF;
