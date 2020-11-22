@@ -91,6 +91,19 @@
   background-color: black;
 }
 
+.facebook:hover {
+  background-color: #3B5998;
+}
+
+.twitter:hover {
+  background-color: #1DA1F2;
+}
+
+.instagram:hover {
+  background-color: #D02B83;
+}
+
+
 /* Buttons - Read Me, Contact Us */
 
 .readme {
