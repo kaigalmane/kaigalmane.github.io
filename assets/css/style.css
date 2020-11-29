@@ -521,7 +521,7 @@ a.hoverline:hover {
 }
 
 .card.large .card-content p {
-  color: inherit;
+  color: #008073;
   margin: 0;
   padding: 30px 0;
 }
