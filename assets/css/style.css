@@ -62,6 +62,10 @@
   color: grey;
 }
 
+.stack {
+  color: #F48024;
+}
+
 .facebook {
   color: #3B5998;
 }
@@ -89,6 +93,10 @@
 
 .github:hover {
   background-color: black;
+}
+
+.stack:hover {
+  background-color: #F48024;
 }
 
 .facebook:hover {
