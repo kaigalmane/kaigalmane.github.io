@@ -62,7 +62,7 @@
   color: grey;
 }
 
-.stackoverflow {
+.stack-overflow {
   color: #F48024;
 }
 
@@ -95,7 +95,7 @@
   background-color: black;
 }
 
-.stackoverflow:hover {
+.stack-overflow:hover {
   background-color: #F48024;
 }
 
