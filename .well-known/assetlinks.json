@@ -1,0 +1,9 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "com.kaigalmane.havyakacarpool",
+    "sha256_cert_fingerprints":
+    ["6E:27:F5:6C:98:0A:CA:35:3A:E6:EA:5A:FF:B5:86:78:82:96:CB:E8:9B:51:99:27:03:21:9A:12:4E:7D:C9:14"]
+  }
+}]
