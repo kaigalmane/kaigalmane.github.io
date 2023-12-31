@@ -3,7 +3,9 @@
   "target": {
     "namespace": "android_app",
     "package_name": "com.kaigalmane.havyakacarpool",
-    "sha256_cert_fingerprints":
-    ["6E:27:F5:6C:98:0A:CA:35:3A:E6:EA:5A:FF:B5:86:78:82:96:CB:E8:9B:51:99:27:03:21:9A:12:4E:7D:C9:14"]
+    "sha256_cert_fingerprints":[
+      "6E:27:F5:6C:98:0A:CA:35:3A:E6:EA:5A:FF:B5:86:78:82:96:CB:E8:9B:51:99:27:03:21:9A:12:4E:7D:C9:14",
+      "11:50:8F:51:8B:3C:5D:6F:8E:14:41:B2:6D:89:E8:88:3B:BB:26:34:ED:C0:8F:04:BE:53:E8:C9:F9:8A:C8:62"
+    ]
   }
 }]
