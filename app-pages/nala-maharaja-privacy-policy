@@ -1,0 +1,10 @@
+<p><strong>Data Collection:</strong></p>
+<p>Your app utilizes the Gemini-1.5 Flash AI model from Google to provide functionalities like suggesting <span style="box-sizing:border-box;margin:0;padding:0;text-align:left;">recepies,</span> summarizing text, translating languages, and generating creative text formats.<br><strong>No personal data is collected or stored by our app.</strong><br>The queries you submit to the Gemini model remain on your device and are not sent to Google servers for processing.</p>
+<p>&nbsp;</p>
+<p><strong>Model Biases:</strong><br>Like any AI model, Gemini-1.5 Flash may contain biases present in its training data. We strive to provide a fair and unbiased experience, but it's important to be aware of this potential limitation.</p>
+<p>&nbsp;</p>
+<p><strong>Transparency and Control:</strong><br>You have complete control over the information you provide to the Gemini model through your queries.<br>The model's responses are generated based on the information you give it.</p>
+<p>&nbsp;</p>
+<p><strong>Security:</strong><br>We follow industry best practices to secure your device and the communication between your app and the Gemini model.</p>
+<p>&nbsp;</p>
+<p><strong>Additional Considerations:</strong><br>If your app collects any user data beyond queries to the Gemini model, you'll need to specify what data is collected, how it's used, and how users can control it.<br>Be sure to review Google's privacy policy for the Gemini API to ensure alignment: <a target="_blank" rel="noopener noreferrer" href="https://ai.google.dev/">https://ai.google.dev/</a></p>
