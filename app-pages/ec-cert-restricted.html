@@ -2,21 +2,25 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <!-- Force fixed desktop-like width so WebView doesn't zoom -->
+  <!-- Force desktop-like width so WebView doesn't zoom -->
   <meta name="viewport" content="width=980, initial-scale=0.3, maximum-scale=1.0, minimum-scale=0.3, user-scalable=no" />
   <title>Certificate Notice</title>
   <style>
     html, body {
-      width: 980px; /* fixed width like the old certificate page */
-      margin: 0 auto;
+      width: 100%;
+      height: 100%;
+      margin: 0;
       padding: 0;
       font-family: system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
       background: linear-gradient(160deg,#ffffff,#256489);
-      color:#222;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    body {
-      min-height: 100vh;
+    /* fixed-width inner container */
+    .page {
+      width: 980px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -24,6 +28,7 @@
 
     .notice-wrap {
       width: 100%;
+      max-width: 480px;
       background:#fff;
       border-radius: 12px;
       padding:24px;
@@ -79,28 +84,21 @@
   </style>
 </head>
 <body>
-  <main role="main" aria-labelledby="notice-title">
-    <section class="notice-wrap" role="region" aria-label="Certificate notice">
-      <div class="icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="2" y="6" width="20" height="14" rx="3" stroke="currentColor" stroke-width="1.2" opacity="0.9"/>
-          <path d="M8 10V8a4 4 0 018 0v2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M12 13v2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-        </svg>
-      </div>
-      <h1 id="notice-title">Certificate view is temporarily disabled</h1>
-      <p>For security reasons certificate view has been temporarily restricted. If you need further assistance, please contact us.</p>
-      <div class="actions">
-        <button class="btn-primary" onclick="contact()" aria-label="Contact us">Contact us</button>
-      </div>
-      <footer>Reference: Security Policy • ID: <span id="ref">#CERT-403</span></footer>
-    </section>
-  </main>
-
-  <script>
-    function contact(){
-      window.location.href = 'mailto:contact@kaigalmaneapps.com?subject=Certificate%20view%20blocked&body=Reason:%20ID%20'+encodeURIComponent(document.getElementById('ref').textContent);
-    }
-  </script>
+  <div class="page">
+    <main role="main" aria-labelledby="notice-title">
+      <section class="notice-wrap" role="region" aria-label="Certificate notice">
+        <div class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2" y="6" width="20" height="14" rx="3" stroke="currentColor" stroke-width="1.2" opacity="0.9"/>
+            <path d="M8 10V8a4 4 0 018 0v2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M12 13v2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h1 id="notice-title">Certificate view is temporarily disabled</h1>
+        <p>For security reasons certificate view has been temporarily restricted. If you need further assistance, please contact us.</p>
+        <footer>Reference: Security Policy • ID: <span id="ref">#CERT-403</span></footer>
+      </section>
+    </main>
+  </div>
 </body>
 </html>
