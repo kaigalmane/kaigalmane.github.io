@@ -18,18 +18,22 @@
     html, body{
       width:100%;
       height:100%;
+      -webkit-text-size-adjust:100%; /* prevent Android font autosize */
       overflow-x:hidden;
+      background: linear-gradient(160deg,var(--bg1),var(--bg2));
     }
 
     body{
       font-family: system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
-      background: linear-gradient(160deg,var(--bg1),var(--bg2));
       display:flex;
       align-items:center;
       justify-content:center;
       padding:16px;
       color:#222;
     }
+
+    /* hide the root until we apply scaling to avoid a blown-up flash */
+    #page-root{ visibility:hidden; transform-origin: 0 0; }
 
     .notice-wrap{
       width:100%;
@@ -54,61 +58,107 @@
     }
     .icon svg{width:36px;height:36px;stroke:var(--accent)}
 
-    h1{
-      font-size:18px;
-      margin-bottom:8px;
-      font-weight:600;
-      color:#111;
-    }
+    h1{ font-size:18px; margin-bottom:8px; font-weight:600; color:#111; }
+    p{ font-size:14px; color:var(--muted); margin-bottom:20px; }
 
-    p{
-      font-size:14px;
-      color:var(--muted);
-      margin-bottom:20px;
-    }
+    .actions button{ padding:12px; border:none; border-radius:8px; font-size:14px; font-weight:600; cursor:pointer; width:100%; }
+    .btn-primary{ background: var(--accent); color:#fff; }
+    footer{ margin-top:16px; font-size:12px; color:#888; }
 
-    .actions button{
-      padding:12px;
-      border:none;
-      border-radius:8px;
-      font-size:14px;
-      font-weight:600;
-      cursor:pointer;
-      width:100%;
-    }
-
-    .btn-primary{
-      background: var(--accent);
-      color:#fff;
-    }
-
-    footer{
-      margin-top:16px;
-      font-size:12px;
-      color:#888;
-    }
+    /* ensure media elements don't overflow after scaling */
+    img, svg{ max-width:100%; height:auto; }
   </style>
 </head>
 <body>
-  <main role="main" aria-labelledby="notice-title">
-    <section class="notice-wrap" role="region" aria-label="Certificate notice">
-      <div class="icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="2" y="6" width="20" height="14" rx="3" stroke="currentColor" stroke-width="1.2" opacity="0.9"/>
-          <path d="M8 10V8a4 4 0 018 0v2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M12 13v2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-        </svg>
-      </div>
-      <h1 id="notice-title">Certificate view is temporarily disabled</h1>
-      <p>For security reasons certificate view has been temporarily restricted. If you need further assistance, please contact us.</p>
-      <div class="actions">
-        <button class="btn-primary" onclick="contact()" aria-label="Contact us">Contact us</button>
-      </div>
-      <footer>Reference: Security Policy • ID: <span id="ref">#CERT-403</span></footer>
-    </section>
-  </main>
+  <div id="page-root">
+    <main role="main" aria-labelledby="notice-title">
+      <section class="notice-wrap" role="region" aria-label="Certificate notice">
+        <div class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2" y="6" width="20" height="14" rx="3" stroke="currentColor" stroke-width="1.2" opacity="0.9"/>
+            <path d="M8 10V8a4 4 0 018 0v2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M12 13v2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h1 id="notice-title">Certificate view is temporarily disabled</h1>
+        <p>For security reasons certificate view has been temporarily restricted. If you need further assistance, please contact us.</p>
+        <div class="actions">
+          <button class="btn-primary" onclick="contact()" aria-label="Contact us">Contact us</button>
+        </div>
+        <footer>Reference: Security Policy • ID: <span id="ref">#CERT-403</span></footer>
+      </section>
+    </main>
+  </div>
 
   <script>
+    (function(){
+      // This script detects when the WebView's layout viewport and the visual viewport differ
+      // (which causes the page to appear zoomed). It then applies a counter-scale so the
+      // page visually fits the device width. Works when you cannot change the Android app.
+
+      function applyFix(){
+        var root = document.getElementById('page-root');
+        if(!root) return;
+
+        // Reset any previous transform
+        root.style.transform = '';
+        root.style.width = '';
+        document.body.style.height = 'auto';
+
+        // Read current values
+        var layoutW = document.documentElement.clientWidth || document.body.clientWidth;
+        var viewportW = window.innerWidth || layoutW;
+
+        // Safety checks
+        if(!layoutW || !viewportW){
+          root.style.visibility = 'visible';
+          return;
+        }
+
+        // Ratio we need to apply to make layoutW visually fit viewportW
+        var ratio = viewportW / layoutW;
+
+        // Clamp to sane bounds to avoid extreme scaling on weird devices
+        ratio = Math.max(0.5, Math.min(2, ratio));
+
+        // Only apply when there's a meaningful difference
+        if(Math.abs(ratio - 1) > 0.02){
+          // measure height *before* scaling so we can expand body to avoid clipping
+          var beforeRect = root.getBoundingClientRect();
+          var beforeHeight = beforeRect.height || (window.innerHeight - 32);
+
+          root.style.transformOrigin = '0 0';
+          root.style.transform = 'scale(' + ratio + ')';
+          root.style.width = (100 / ratio) + '%';
+
+          // adjust body height so the page isn't cut off after transform
+          document.body.style.height = Math.ceil(beforeHeight * ratio) + 'px';
+        } else {
+          root.style.width = '100%';
+          document.body.style.height = 'auto';
+        }
+
+        // show content after adjustments
+        root.style.visibility = 'visible';
+      }
+
+      // Run on load and again after short delays because some WebViews change scale after initial load
+      window.addEventListener('load', function(){
+        applyFix();
+        setTimeout(applyFix, 300);
+        setTimeout(applyFix, 900);
+      });
+
+      // re-apply on resize/orientationchange
+      window.addEventListener('resize', function(){ setTimeout(applyFix, 80); });
+      window.addEventListener('orientationchange', function(){ setTimeout(applyFix, 300); });
+
+      // if your WebView evaluates JS from the app after loading (like hiding elements), re-run
+      // a final fix shortly after DOM changes
+      var mo = new MutationObserver(function(){ setTimeout(applyFix, 120); });
+      mo.observe(document.getElementById('page-root'), { childList: true, subtree: true });
+    })();
+
     function contact(){
       window.location.href = 'mailto:contact@kaigalmaneapps.com?subject=Certificate%20view%20blocked&body=Reason:%20ID%20'+encodeURIComponent(document.getElementById('ref').textContent);
     }
