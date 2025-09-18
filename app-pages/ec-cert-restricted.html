@@ -2,141 +2,108 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Certificate Notice</title>
   <style>
     :root{
-      --bg1: #ffffff; /* dark blue */
-      --bg2: #0b1220;
-      --card: rgba(255,255,255,0.06);
+      --bg1: #ffffff;
+      --bg2: #256489;
       --accent: #256489;
-      --muted: rgba(255,255,255,0.7);
-      --glass: rgba(255,255,255,0.04);
-      --radius: 14px;
-      --gap: 16px;
-      --maxWidth: 720px;
+      --muted: #555;
+      --radius: 12px;
+      --maxWidth: 480px;
     }
-    /* Reset & base */
-    *{box-sizing:border-box}
-    html,body{height:100%}
+
+    *{box-sizing:border-box; margin:0; padding:0}
     body{
-      margin:0;
-      font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Noto Sans",sans-serif;
+      min-height:100vh;
+      font-family: system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
       background: linear-gradient(160deg,var(--bg1),var(--bg2));
-      -webkit-font-smoothing:antialiased;
-      color: #fff;
       display:flex;
       align-items:center;
       justify-content:center;
-      padding:24px;
-      line-height:1.35;
+      padding:16px;
+      color:#222;
     }
 
-    /* Container */
     .notice-wrap{
       width:100%;
       max-width:var(--maxWidth);
-      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
-      border-radius: calc(var(--radius) + 6px);
-      padding: clamp(18px, 4vw, 28px);
-      box-shadow: 0 6px 30px rgba(2,6,23,0.6), inset 0 1px 0 rgba(255,255,255,0.02);
-      backdrop-filter: blur(6px) saturate(120%);
-      display:flex;
-      gap:var(--gap);
-      align-items:center;
-      justify-content:flex-start;
+      background:#fff;
+      border-radius: var(--radius);
+      padding:24px;
+      box-shadow:0 4px 16px rgba(0,0,0,0.15);
+      text-align:center;
     }
 
     .icon{
-      min-width:64px;
-      min-height:64px;
-      display:grid;
-      place-items:center;
-      border-radius:12px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
-      flex-shrink:0;
+      margin:0 auto 16px auto;
+      width:64px;
+      height:64px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:50%;
+      background: rgba(37,100,137,0.1);
     }
-    .icon svg{width:44px;height:44px}
-
-    .content{
-      flex:1 1 auto;
-      min-width:0;
-    }
+    .icon svg{width:36px;height:36px;stroke:var(--accent)}
 
     h1{
-      margin:0 0 6px 0;
-      font-size: clamp(16px, 4.6vw, 20px);
-      letter-spacing:-0.01em;
+      font-size:1.25rem;
+      margin-bottom:8px;
       font-weight:600;
+      color:#111;
     }
 
-    p{margin:0;color:var(--muted);font-size: clamp(13px, 3.8vw, 15px)}
-
-    .actions{
-      margin-top:12px;
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
+    p{
+      font-size:0.95rem;
+      color:var(--muted);
+      margin-bottom:20px;
     }
 
-    button{
-      -webkit-appearance:none;
-      border:0;
-      padding:10px 14px;
-      border-radius:10px;
+    .actions button{
+      padding:10px 16px;
+      border:none;
+      border-radius:8px;
+      font-size:0.95rem;
       font-weight:600;
-      font-size:14px;
       cursor:pointer;
     }
 
     .btn-primary{
-      background: linear-gradient(90deg,var(--accent), #256489);
-      color:white;
-      box-shadow: 0 6px 18px rgba(62, 186, 232, 0.18);
+      background: var(--accent);
+      color:#fff;
+      width:100%;
     }
 
-    .btn-ghost{
-      background:transparent;
-      color:var(--muted);
-      border:1px solid rgba(255,255,255,0.06);
+    footer{
+      margin-top:16px;
+      font-size:0.75rem;
+      color:#888;
     }
-
-    footer{margin-top:12px;font-size:12px;color:rgba(255,255,255,0.45)}
-
-    /* Small devices - make card full height centered */
-    @media (max-width:420px){
-      body{padding:18px}
-      .notice-wrap{padding:18px}
-      .icon{min-width:56px;min-height:56px}
-    }
-
   </style>
 </head>
 <body>
   <main role="main" aria-labelledby="notice-title">
     <section class="notice-wrap" role="region" aria-label="Certificate notice">
       <div class="icon" aria-hidden="true">
-        <!-- lock shield icon -->
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <rect x="2" y="6" width="20" height="14" rx="3" stroke="currentColor" stroke-width="1.2" opacity="0.9"/>
           <path d="M8 10V8a4 4 0 018 0v2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
           <path d="M12 13v2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
         </svg>
       </div>
-      <div class="content">
-        <h1 id="notice-title">Certificate view is temporarily disabled</h1>
-        <p>For security reasons certificate view has been temporarily restricted. If you need further assistance, feel free to contact us.</p>
-        <div class="actions">
-          <button class="btn-primary" onclick="contact()" aria-label="Contact us">Contact us</button>
-        </div>
-        <footer>Reference: Security Policy • ID: <span id="ref">#CERT-403</span></footer>
+      <h1 id="notice-title">Certificate view is temporarily disabled</h1>
+      <p>For security reasons certificate view has been temporarily restricted. If you need further assistance, please contact us.</p>
+      <div class="actions">
+        <button class="btn-primary" onclick="contact()" aria-label="Contact us">Contact us</button>
       </div>
+      <footer>Reference: Security Policy • ID: <span id="ref">#CERT-403</span></footer>
     </section>
   </main>
 
   <script>
     function contact(){
-      // open mailto as a convenient default for mobile
       window.location.href = 'mailto:contact@kaigalmaneapps.com?subject=Certificate%20view%20blocked&body=Reason:%20ID%20'+encodeURIComponent(document.getElementById('ref').textContent);
     }
   </script>
