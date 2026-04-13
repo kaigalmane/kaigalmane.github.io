@@ -19,10 +19,21 @@
             font-weight: 400;
         }
 
+        .notice-highlight {
+            background-color: #fff6d8;
+            border-left: 4px solid #f2c94c;
+            padding: 12px 14px;
+            border-radius: 8px;
+        }
+
         @media (max-width: 600px) {
             h4 {
                 font-size: 16px;
                 margin: 15px;
+            }
+
+            .notice-highlight {
+                padding: 10px 12px;
             }
         }
 
@@ -35,11 +46,17 @@
             h4 {
                 color: #e0e0e0;
             }
+
+            .notice-highlight {
+                background-color: #2a2618;
+                border-left-color: #b38a2d;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
+        <h4 class="notice-highlight">The app might not work properly as the government servers are not working as expected.</h4>
         <h4>Use the latest version from the Play Store/App Store. We are regularly fixing issues.</h4>
         <h4>This application is for informational purposes only. Please use it responsibly.</h4>
         <h4>This app operates independently of the government and relies solely on publicly available data for its information.</h4>
