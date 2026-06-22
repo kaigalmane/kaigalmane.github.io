@@ -21,7 +21,7 @@
 
         @keyframes glow-pulse {
             0%, 100% { box-shadow: 0 0 4px 1px rgba(62, 207, 178, 0.4); }
-            50%       { box-shadow: 0 0 8px 2px rgba(21, 101, 160, 0.45); }
+            50%       { box-shadow: 0 0 10px 3px rgba(21, 101, 160, 0.5); }
         }
 
         .container {
@@ -29,12 +29,13 @@
         }
 
         .notice-highlight {
-            background: linear-gradient(135deg, #e8f8f5 0%, #e3f0fb 100%);
-            border-left: 4px solid #3ecfb2;
+            background: linear-gradient(135deg, #e6fff7 0%, #e1efff 100%);
+            border-left: 4px solid #1ea88d;
             padding: 12px 14px;
-            border-radius: 8px;
-            font-weight: 500;
-            color: #0d4f8b;
+            border-radius: 10px;
+            font-weight: 600;
+            color: #0b4f8a;
+            letter-spacing: 0.1px;
             animation: glow-pulse 2.4s ease-in-out infinite;
         }
 
@@ -60,21 +61,19 @@
             }
 
             .notice-highlight {
-                background: linear-gradient(135deg, #0d3b33 0%, #0d2a45 100%);
-                border-left-color: #3ecfb2;
-                color: #a8edd9;
+                background: linear-gradient(135deg, #0c4036 0%, #0d2f4d 100%);
+                border-left-color: #38d1b1;
+                color: #b8f3e4;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h4 class="notice-highlight">🎉 A brand new update is coming soon. Stay tuned!</h4>
-        <h4>Use the latest version from the Play Store/App Store. We are regularly fixing issues.</h4>
+        <h4 class="notice-highlight">🎉 A brand new update has been released with new design and improvements. Update your app to version 5.4 now.</h4>
         <h4>This application is for informational purposes only. Please use it responsibly.</h4>
         <h4>This app operates independently of the government and relies solely on publicly available data for its information.</h4>
         <h4>If your vehicle's emission certificate has expired, you can get it renewed by taking your vehicle to a nearby authorized emission testing center.</h4>
-        <h4>Please be informed that the servers may be unavailable at night.</h4>
     </div>
 </body>
 </html>
